@@ -1,1 +1,1 @@
-# kalix-trial-scala-shoppingcart
+# kalix-trial-scala-shoppingcart example
