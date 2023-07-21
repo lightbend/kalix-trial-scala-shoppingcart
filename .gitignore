@@ -1,0 +1,7 @@
+/.idea/
+/kalix-trail-shoppingcart-scala.iml
+/target/
+dependency-reduced-pom.xml
+pom-local.xml
+/project/target/
+/project/project/
