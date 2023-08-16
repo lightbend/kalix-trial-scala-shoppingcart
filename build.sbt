@@ -1,5 +1,9 @@
 organization := "com.example.shoppingcart"
 
+
+val kalixProjectName = sys.props.get("kalix.project").getOrElse("kalix-trial-scala-ecommerce")
+dockerAlias := dockerAlias.value.withName(kalixProjectName+"/"+packageName.value)
+
 scalaVersion := "2.13.10"
 
 enablePlugins(KalixPlugin, JavaAppPackaging, DockerPlugin)
@@ -33,3 +37,4 @@ Compile / javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation", "-param
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.7" % Test
 )
+
