@@ -8,14 +8,14 @@ If you have gone through the `Explore Kalix Virtaully` journey, you are all set 
 - [Run locally in prod-like environment](#run-locally-in-prod-like-environment) <br>
 - [Deploy and run on Kalix Platform on Cloud Provider of your choice ](deploy-and-run-on-kalix-platform-on-cloud-provider-of-your-choice)
 
-However, if you would like to better understand the `Kalix Developer Experience` and how to build applications on Kalix, here is more details on the same-use.
+However, if you would like to better understand the `Kalix Developer Experience` and how to build applications on Kalix, here is more detail on the same usecase.
 # Kalix Trial - eCommerce - Scala
 ## Designing Kalix Services
 ### Use case
 ![Use case](images/ecommerce-design_kalix_services.png)<br>
 eCommerce use case is a simple shopping cart example consisting of product stock and shopping cart.
 Product stock models stock (simple quantity) of products that are being sold and Shopping Cart models list of products customer intends to buy.<br>
-In this exercise focus is on implementing Product Stock functionalities
+In this exercise the focus is on implementing Product Stock functionalities
 #### Product Stock
 Data model:
 - quantity
@@ -26,7 +26,7 @@ Operations:
 
 ### Kalix components
 Kalix components are building blocks used to abstract functionalities.<br>
-In this use case we are going to use Kalix component called `Entity`.<br>
+In this use case we are going to use a Kalix component called `Entity`.<br>
 ![Entity](images/e-commerce-kalix-component-entity.png)<br>
 Entity:
 - component for modeling of data and data business logic operations
@@ -84,7 +84,7 @@ Entity:
 ## Kickstart Kalix development project
 ### Kalix giter8 template
 Kalix [giter8](https://www.foundweekends.org/giter8/) generates a new Scala development project from Kalix template
-### Create shopping cart Maven project from Kalix template
+### Create shopping cart Scala project from Kalix template
 Execute in command line:
 ```
 sbt new lightbend/kalix-value-entity.g8
@@ -236,7 +236,7 @@ else
   effects.error("Already created")
 ```
 ### `get` endpoint
-Business logic for get is to product stock data if exists and if not return not found error.
+Business logic for get is to get product stock data if it exists and if not return not found error.
 ```
 override def get(currentState: ProductStock, getProductStock: GetProductStock): ValueEntity.Effect[ProductStock] =
 if (currentState == ProductStock.defaultInstance)
@@ -265,7 +265,7 @@ else
   effects.updateState(ProductStock.defaultInstance).thenReply(Empty.defaultInstance)
 ```
 ## Test
-Kalix comes with very rich test kit for unit and integration testing of Kalix code
+Kalix comes with very rich test kit for unit and integration testing of Kalix code.
 
 `Test kit` provides help (custom assertions, mocks,...) with:
 - unit testing of individual Kalix components (e.g `Entity`) in isolation
