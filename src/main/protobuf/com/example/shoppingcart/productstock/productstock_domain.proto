@@ -1,0 +1,5 @@
+syntax = "proto3";
+package com.example.shoppingcart.productstock;
+message ProductStock{
+  int32 quantity = 1;
+}

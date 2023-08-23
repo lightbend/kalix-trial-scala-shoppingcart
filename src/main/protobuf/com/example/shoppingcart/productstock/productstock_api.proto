@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "kalix/annotations.proto";
+import "google/api/annotations.proto";
+
+import "com/example/shoppingcart/productstock/productstock_domain.proto";
+
+package com.example.shoppingcart.productstock;
+
+message CreateProductStockRequest {
+  string product_id = 1 [(kalix.field).entity_key = true];
+  int32 quantity = 2;
+}
+
+message UpdateProductStockRequest {
+  string product_id = 1 [(kalix.field).entity_key = true];
+  int32 quantity = 2;
+}
+
+message DeleteProductStockRequest {
+  string product_id = 1 [(kalix.field).entity_key = true];
+}
+
+message GetProductStock {
+  string product_id = 1 [(kalix.field).entity_key = true];
+}
+
+service ProductStockService {
+  option (kalix.codegen) = {
+    value_entity: {
+      name: "com.example.shoppingcart.productstock.ProductStockEntity"
+      entity_type: "product-stock"
+      state: "com.example.shoppingcart.productstock.ProductStock"
+    }
+  };
+  rpc Create(CreateProductStockRequest) returns (google.protobuf.Empty){
+    option (google.api.http) = {
+      post: "/product-stock/{product_id}/create"
+      body: "*"
+    };
+  }
+  rpc Get(GetProductStock) returns (ProductStock){
+    option (google.api.http) = {
+      get: "/product-stock/{product_id}/get"
+    };
+  }
+  rpc Update(UpdateProductStockRequest) returns (google.protobuf.Empty){
+    option (google.api.http) = {
+      put: "/product-stock/{product_id}/update"
+      body: "*"
+    };
+  }
+  rpc Delete(DeleteProductStockRequest) returns (google.protobuf.Empty){
+    option (google.api.http) = {
+      delete: "/product-stock/{product_id}/delete"
+    };
+  }
+}
