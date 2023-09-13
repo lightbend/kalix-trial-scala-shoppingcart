@@ -390,17 +390,13 @@ Result:
    ```
    **Note**: The command will output Kalix user details and column `USERNAME` will be used with `docker push` to `KCR`<br>
 4. Build and push the project image
-Add this to `build.sbt` to configure docker image name for pushing to `KCR`:
-```
-val kalixProjectName = sys.props.get("kalix.project").getOrElse("kalix-trial-scala-ecommerce")
-dockerAlias := dockerAlias.value.withName(kalixProjectName+"/"+packageName.value)
-```
-**Note**: More details about `KCR` image name format can be found in offical documentation [here](https://docs.kalix.io/projects/container-registries.html#_pushing_an_image_to_kcr).<br>
 Trigger project build and docker push to `KCR`:
 ```
-sbt Docker/publish -Ddocker.registry=kcr.us-east-1.kalix.io -Ddocker.username=<myusername> -Dkalix.project=kalix-trial-scala-ecommerce
+sbt Docker/publish -Ddocker.registry=kcr.us-east-1.kalix.io -Ddocker.username=<myusername>/kalix-trial-scala-ecommerce -Dkalix.project=kalix-trial-scala-ecommerce
 ```
-**Note**: Replace `<myusername>` with username extracted Kalix user username done in previous section.
+**Note**: Replace `<myusername>` with username extracted Kalix user username done in previous section.<br>
+**Note**: More details about `KCR` image name format can be found in offical documentation [here](https://docs.kalix.io/projects/container-registries.html#_pushing_an_image_to_kcr).<br>
+**Note**: `kalix-trial-scala-ecommerce` is a project name
 5. Deploy service in Kalix project:
  ```
 kalix service deploy kcr.us-east-1.kalix.io/<username>/kalix-trial-scala-ecommerce/kalix-trial-shoppingcart-scala:latest 

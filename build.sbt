@@ -1,9 +1,5 @@
 organization := "com.example.shoppingcart"
 
-
-val kalixProjectName = sys.props.get("kalix.project").getOrElse("kalix-trial-scala-ecommerce")
-dockerAlias := dockerAlias.value.withName(kalixProjectName+"/"+packageName.value)
-
 scalaVersion := "2.13.10"
 
 enablePlugins(KalixPlugin, JavaAppPackaging, DockerPlugin)
