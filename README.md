@@ -25,8 +25,8 @@ Operations:
 - CREATE/READ/UPDATE/DELETE product stock
 
 ### Kalix components
-Kalix components are building blocks used to abstract functionalities.<br>
-In this use case we are going to use a Kalix component called `Entity`.<br>
+Kalix components serve to abstract functionalities.<br>
+In this particular use case, we will utilize a Kalix component known as `Entity`.<br>
 ![Entity](images/e-commerce-kalix-component-entity.png)<br>
 Entity:
 - component for modeling of data and data business logic operations
